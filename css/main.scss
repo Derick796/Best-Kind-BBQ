@@ -1,0 +1,167 @@
+$bg-black: black; //this is declaring variable $bg-black as color black, feel free to change to whatever color you want or whatever name you want to call it. Make sure it is always starting with the '$'
+$primary: #fedf4b;
+$font1: "Nunito Sans", sans-serif; //this is declaring variable $font1 as nunito, feel free to change to whatever font you want or whatever name you want to call it. Make sure it is always starting with the '$'
+$font2: "Oswald", sans-serif;
+
+//this is declaring everything on the website to margin: 0 and padding: 0, because without doing this, google chrome automatically sets some margins for you
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font1;
+}
+
+body {
+  background-color: $bg-black;
+  height: 100vh;
+  width: 100%;
+  //min-height: 100%; //from the dockey website
+}
+
+.container {
+  width: 90%;
+  min-width: 40em;
+  margin: 0 auto;
+}
+
+nav {
+  position: fixed; // the bar will always be there
+  width: 100%;
+  z-index: 100;
+  //background-color: white;
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    //align-items: center;
+    justify-content: space-between;
+    top: 0%;
+    left: 0%;
+  }
+  .left,
+  .right {
+    margin-top: 1.25em; // stops links from being at very top of page
+    a {
+      text-decoration: none; // removes underline on link
+      text-transform: uppercase; //make whole text all caps
+      color: $primary;
+      font-size: 1em;
+      font-family: $font1;
+      font-weight: 500;
+      //  margin-top: 2em;
+      letter-spacing: 1px;
+      transition: 0.5s all ease-in-out;
+      &:nth-child(1) {
+        margin-right: 2em;
+      }
+
+      &:hover {
+        letter-spacing: 3px;
+      }
+    }
+  }
+
+  .logo {
+    position: fixed; // to stop it from moving when link is hovered
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $primary;
+    font-size: 2.5em;
+    font-family: $font2;
+    font-weight: 500;
+    //top: 0;
+    left: 42%; //centers logo
+  }
+}
+
+section.video-banner {
+  //position: relative; //because video is absolute for every absolute there is a relative
+  .video-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    //z-index: 2;
+    iframe,
+    video {
+      width: 100vw;
+      height: 56.25vw;
+      min-height: 100vh;
+      min-width: 177.77vh;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .video-container:after {
+    z-index: 2; //puts it above the video
+    content: " ";
+    position: absolute; //since container is relative
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.4;
+  }
+
+  .title-overVideo {
+    position: absolute; //put it wherever i want
+    z-index: 3; //puts it over the overlay
+    width: 100%;
+    //max-width: 50%;
+    margin: 0 auto; // still dont know what this does?
+    top: 50%;
+    left: 50%; // supposed to put it at center it pushes it far left
+    transform: translate(
+      -50%,
+      -40%
+    ); // puts it where i want its -48%,-40% when left is 50%
+    text-align: center; // centers the text
+    h1 {
+      text-transform: uppercase;
+      color: $primary;
+      font-family: $font2;
+      font-size: 10em;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -8px; //bring letters closer together
+      &.special {
+        -webkit-text-stroke: 2px $primary;
+        color: transparent;
+      }
+    }
+    h6 {
+      text-transform: uppercase;
+      color: $primary;
+      font-size: 1em;
+      font-weight: 700;
+      font-family: $font1;
+      width: 45%;
+      transform: translate(
+        60%,
+        0
+      ); //positions it where i want it below the "great people"
+      margin-top: 1em; // space with h1
+      margin-bottom: 2em; //space with btn
+    }
+    .btn {
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 700;
+      color: $primary;
+      //left: 10%;
+      border: 2px solid $primary; //gives border to button
+      padding: 0.85em 2em; //retaes space inside button
+      border-radius: 50px; //makes border round
+      //transform: translate(-4%, 0);
+      margin-left: -2em; //moves it slightly to the left
+      transition: all 300ms ease-in-out;
+      &:hover {
+        background-color: $primary;
+        color: black;
+      }
+    }
+  }
+}
